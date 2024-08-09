@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "jsx": "react-jsx",
+
+        /* Modules */
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "paths": {
+            "~/*": ["src/*"]
+        },
+        "resolveJsonModule": true,
+        "allowJs": true,
+        "noEmit": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "isolatedModules": true,
+        "strict": true,
+        "skipLibCheck": true
+    },
+    "include": [
+        "src/**/*" // Bao gồm tất cả các file trong thư mục src
+    ],
+    "exclude": [
+        "node_modules", // Loại trừ thư mục node_modules khỏi quá trình biên dịch
+        "**/*.spec.ts",
+        "**/*.test.ts",
+        "setupTests.ts"
+    ]
+}
