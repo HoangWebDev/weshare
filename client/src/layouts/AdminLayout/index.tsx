@@ -10,7 +10,7 @@ function AdminLayout({ children }: PropChildren) {
             <Sidebar className='absolute left-0 top-0 h-screen z-[9999] flex flex-col w-[19%] overflow-y-auto bg-[#1c2434] lg:static lg:translate-x-0 -translate-x-full scrollbar scrollbar-none' />
             <div className='relative h-[1000px] w-[81%] overflow-y-auto overflow-x-hidden'>
                 <Header />
-                <main className='bg-[#f1f5f9] h-screen'>
+                <main className='bg-[#f1f5f9] h-screen overflow-y-auto'>
                     {children}
                 </main>
             </div>

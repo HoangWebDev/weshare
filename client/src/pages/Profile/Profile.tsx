@@ -31,7 +31,7 @@ function Profile() {
     const context = useContext(ResponsiveContext);
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const [selectedFile, setSelectedFile] = useState<PreviewFile | null>(null);
-
+    const userProfile = useProfile();
     const queryClient = new QueryClient();
 
     const { data } = useQuery<UserModel>({
@@ -136,19 +136,21 @@ function Profile() {
                             ) : (
                                 <Image className="size-40 rounded-full p-1 bg-[#ffffff] object-cover" />
                             )}
-                            <Button>
-                                <FontAwesomeIcon
-                                    onClick={handleImageClick}
-                                    icon={faCamera}
-                                    className="absolute bottom-4 right-4 text-xl text-gray-500 bg-[#f1f1f1] p-2 rounded-full"
-                                />
-                                <input
-                                    ref={fileInputRef}
-                                    type="file"
-                                    onChange={handleFileChange}
-                                    className="my-2 hidden"
-                                />
-                            </Button>
+                            {userProfile.id_user === idUser &&
+                                <Button>
+                                    <FontAwesomeIcon
+                                        onClick={handleImageClick}
+                                        icon={faCamera}
+                                        className="absolute bottom-4 right-4 text-xl text-gray-500 bg-[#f1f1f1] p-2 rounded-full"
+                                    />
+                                    <input
+                                        ref={fileInputRef}
+                                        type="file"
+                                        onChange={handleFileChange}
+                                        className="my-2 hidden"
+                                    />
+                                </Button>
+                            }
                         </div>
                         <div>
                             <h2 className="text-3xl font-bold">{data && data.full_name}</h2>

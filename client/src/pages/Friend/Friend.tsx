@@ -18,12 +18,13 @@ function Friend() {
     const userFriend = FriendShip(users, userProfile?.id_user || 0);
 
     useEffect(() => {
-        if (users) {
+        if (users && userProfile) {
             const filter = users.filter(
                 (user) =>
-                    user.id_user !== userProfile.id_user &&
+                    user.role !== 1 && user.id_user !== userProfile.id_user &&
                     !userFriend.some((friend) => friend.id_user === user.id_user),
             );
+            console.log("Filtered Users:", filter);
             setFilterUser(filter);
         }
     }, [users, userProfile, userFriend]);

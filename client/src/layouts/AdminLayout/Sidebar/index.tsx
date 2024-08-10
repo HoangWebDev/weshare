@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/jsx-no-undef */
 import { Link } from "react-router-dom";
 import Image from "~/components/Image";
 import images from "~/assets/images";
 import { PropChildren } from "~/types/Interface/childrenInterface";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightFromBracket, faBorderAll, faChevronDown, faChevronUp, faTableCellsLarge, faTableList } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightFromBracket, faArrowRightToBracket, faBorderAll, faChevronDown, faChevronUp, faListCheck, faTableCellsLarge, faTableList, faUsers, faUserSecret } from "@fortawesome/free-solid-svg-icons";
 import { faCalendar, faNewspaper } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
 import { PersonIcon } from "~/components/Icons";
@@ -14,7 +15,7 @@ function Sidebar({ className }: PropChildren) {
     const [menuChild, setMenuChild] = useState('login');
     const [show, setShow] = useState<{ [key: string]: boolean }>({
         authen: false,
-        table: false
+        task: false
     });
 
     const handleClass = (id: string) => {
@@ -24,8 +25,6 @@ function Sidebar({ className }: PropChildren) {
 
     const handleClassChild = (id: string) => {
         setMenuChild(id);
-
-
     }
 
     const getClass = (id: string) => {
@@ -59,29 +58,29 @@ function Sidebar({ className }: PropChildren) {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/admin/user-management" className={getClass('user')} onClick={() => handleClass('user')}>
-                                <PersonIcon className="size-5" />
-                                <span className="font-medium">User</span>
+                            <Link to="/admin/profile" className={getClass('profile')} onClick={() => handleClass('profile')}>
+                                <FontAwesomeIcon icon={faUserSecret} className="size-5" />
+                                <span className="font-medium">Profile</span>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/admin/feed-management" className={getClass('feed')} onClick={() => handleClass('feed')}>
-                                <FontAwesomeIcon icon={faNewspaper} className="size-5" />
-                                <span className="font-medium">Feed</span>
+                            <Link to="#" className={getClass('task')} onClick={() => handleClass('task')}>
+                                <FontAwesomeIcon icon={faListCheck} className="size-5" />
+                                <span className="font-medium">Task</span>
+                                <FontAwesomeIcon icon={show.task ? faChevronUp : faChevronDown} className="absolute right-4 size-5" />
                             </Link>
-                        </li>
-                        <li>
-                            <Link to="#" className={getClass('table')} onClick={() => handleClass('table')}>
-                                <FontAwesomeIcon icon={faTableList} className="size-5" />
-                                <span className="font-medium">Table</span>
-                                <FontAwesomeIcon icon={show.table ? faChevronUp : faChevronDown} className="absolute right-4 size-5" />
-                            </Link>
-                            <div className={`translate transform overflow-hidden ${show.table ? "false" : "hidden"}`}>
+                            <div className={`translate transform overflow-hidden ${show.task ? "false" : "hidden"}`}>
                                 <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
                                     <li>
-                                        <Link to="/admin/user-management" className={getClassChild('table')} onClick={() => handleClassChild('table')}>
-                                            <PersonIcon className="size-5" />
-                                            <span className="font-medium">Table</span>
+                                        <Link to="/admin/user-management" className={getClassChild('user')} onClick={() => handleClassChild('user')}>
+                                            <FontAwesomeIcon icon={faUsers} className="size-5" />
+                                            <span className="font-medium">User</span>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/admin/feed-management" className={getClassChild('feed')} onClick={() => handleClassChild('feed')}>
+                                            <FontAwesomeIcon icon={faNewspaper} className="size-5" />
+                                            <span className="font-medium">Feed</span>
                                         </Link>
                                     </li>
                                 </ul>
@@ -101,8 +100,8 @@ function Sidebar({ className }: PropChildren) {
                             <div className={`translate transform overflow-hidden ${show.authen ? "false" : "hidden"}`}>
                                 <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
                                     <li>
-                                        <Link to="/admin/user-management" className={getClassChild('login')} onClick={() => handleClassChild('login')}>
-                                            <PersonIcon className="size-5" />
+                                        <Link to="/admin/login" className={getClassChild('login')} onClick={() => handleClassChild('login')}>
+                                            <FontAwesomeIcon icon={faArrowRightToBracket} className="size-5" />
                                             <span className="font-medium">Login</span>
                                         </Link>
                                     </li>

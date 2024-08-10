@@ -71,7 +71,7 @@ class UserController {
                 const user = await User.findByPk(id_user);
                 if (user) {
                     // Lấy thông tin cần cập nhật từ body request
-                    const { email, full_name, phone, birthday, gender, picture_url } = req.body;                    
+                    const {  email, full_name, phone, birthday, gender, isBlocked, picture_url, role } = req.body;                    
 
                     let avatar = picture_url; // Giữ nguyên ảnh đại diện nếu không có file mới
 
@@ -89,13 +89,15 @@ class UserController {
                     }
 
                     // Cập nhật thông tin người dùng trong database
-                    const updatedUser = await user.update({                        
+                    const updatedUser = await user.update({                                               
                         email,
                         full_name,
                         phone,
                         birthday,
                         gender,
+                        isBlocked,
                         picture_url: avatar,
+                        role,
                         updated_at: new Date(),
                     });
                     console.log('Iduser', id_user, 'Avatar', avatar);
@@ -141,6 +143,11 @@ class UserController {
             if (!user) {
                 return res.status(401).json({ error: 'Invalid username' });
             }
+
+            if (user.isBlocked === 1) {
+                return res.status(401).json({ error: 'User is blocked' });
+            }
+            
             const isValid = await User.comparePassword(password, user.password_hash);
             if (!isValid) {
                 return res.status(401).json({ error: 'Invalid password' });
@@ -153,7 +160,7 @@ class UserController {
                     role: user.role,
                 },
                 secret,
-                { expiresIn: '1h' },
+                { expiresIn: '5h' },
             );
             res.setHeader('Authorization', 'Bearer ' + token);
             res.json({ message: 'Login successfully', token: token, role: user.role });

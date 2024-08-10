@@ -33,6 +33,9 @@ const User = sequelize.define('Users', {
     gender: {
         type: DataTypes.STRING
     },
+    isBlocked: {
+        type: DataTypes.INTEGER
+    },
     picture_url: {
         type: DataTypes.STRING
     },

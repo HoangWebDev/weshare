@@ -16,7 +16,10 @@ const adminRoutes = {
     adminDashboard: '/admin/dashboard',
     adminUser: '/admin/user-management',
     adminFeed: '/admin/feed-management',
-    adminUserUpdate: '/admin/user-update'
+    adminUserInfor: '/admin/user-infor/:id_user',
+    adminFeedInfor: '/admin/feed-infor/:id_posts',
+    adminLogin: '/admin/login',
+    adminProfile: '/admin/profile'
 };
 
 export { routes, adminRoutes }

@@ -7,7 +7,7 @@ const { verifyToken, combinedAuth } = require("../service/auth.token.js");
 // Định nghĩa các route
 router.put('/changepassword', verifyToken, userController.changePassword);
 router.post('/login', userController.login);
-router.post('/', verifyToken, userController.createUser); // Chỉ admin có thể tạo user
+router.post('/', userController.createUser);
 router.get('/search', verifyToken, userController.searchUser); // Cả user và admin đều có thể xem danh sách user
 router.get('/profile', verifyToken, userController.getUserProfile);
 router.get('/', verifyToken, userController.getUser);

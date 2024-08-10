@@ -7,10 +7,11 @@ interface IUserModel {
     phone?: number;
     birthday?: Date;
     gender?: number;
+    idBlocked?: number;
     picture_url?: string;
     created_at?: Date;
     updated_at?: Date;
-    role?: string;
+    role?: number;
 }
 
 class UserModel implements IUserModel {
@@ -22,10 +23,11 @@ class UserModel implements IUserModel {
     phone?: number;
     birthday?: Date;
     gender?: number;
+    isBlocked?: number;
     picture_url?: string;
     created_at?: Date;
     updated_at?: Date;
-    role?: string;
+    role?: number;
 
     constructor(id_user: number | null,
         full_name: string, email: string, username: string,
@@ -33,10 +35,11 @@ class UserModel implements IUserModel {
         phone: number,
         birthday: Date,
         gender: number,
+        isBlocked: number,
         picture_url: string,
         created_at: Date,
         updated_at: Date,
-        role: string
+        role: number
     ) {
         this.id_user = id_user;
         this.full_name = full_name;

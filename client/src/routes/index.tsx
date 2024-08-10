@@ -13,7 +13,10 @@ import ForgetPass from '~/pages/ForgetPass';
 import Dashboard from '~/pages/Admin/Dashboard';
 import UserManagement from '~/pages/Admin/UserManagement';
 import FeedManagement from '~/pages/Admin/FeedManagement';
-import ManagementAdmin from '~/features/ManagementAdmin';
+import LoginAdmin from '~/pages/Admin/Login';
+import ProfileAdmin from '~/pages/Admin/Profile';
+import ManagementFeedAdmin from '~/features/ManagementFeedAdmin';
+import ManagementUserAdmin from '~/features/ManagementUserAdmin';
 
 //Các route không cần xác thưc
 const publicRoutes: Route[] = [
@@ -37,7 +40,10 @@ const adminRoutes: Route[] = [
     { path: config.adminRoutes.adminDashboard, component: Dashboard, layout: AdminLayout },
     { path: config.adminRoutes.adminUser, component: UserManagement, layout: AdminLayout },
     { path: config.adminRoutes.adminFeed, component: FeedManagement, layout: AdminLayout },
-    { path: config.adminRoutes.adminUserUpdate, component: ManagementAdmin, layout: AdminLayout }
+    { path: config.adminRoutes.adminUserInfor, component: ManagementUserAdmin, layout: AdminLayout },
+    { path: config.adminRoutes.adminFeedInfor, component: ManagementFeedAdmin, layout: AdminLayout },
+    { path: config.adminRoutes.adminLogin, component: LoginAdmin, layout: AdminLayout },
+    { path: config.adminRoutes.adminProfile, component: ProfileAdmin, layout: AdminLayout },
 ]
 
 export { publicRoutes, privateRoutes, adminRoutes };

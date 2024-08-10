@@ -24,7 +24,7 @@ const verifyToken = (req, res, next) => {
 
 const combinedAuth = (req, res, next) => {
   verifyToken(req, res, () => {
-    if (req.user.role === 1 || req.user.role === 0) { // 1 là admin, 0 là user
+    if (req.user.role === "1" || req.user.role === "0") { // 1 là admin, 0 là user
       next();
     } else {
       return res.status(403).json({
